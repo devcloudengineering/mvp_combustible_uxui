@@ -1,6 +1,12 @@
 import { useState } from "react";
 import account from "../assets/account.png";
+import zonahoraria from "../assets/zona_horaria.png";
+import consumocombustible from "../assets/consumo_combustible.png";
+import huellacarbono from "../assets/huella_carbono.png";
+import kilometrosrecorridos from "../assets/kilometros_recorridos.png";
 import "../styles/dashboard.css";
+import Buscador from "../components/Dashboards/Buscador";
+import TablaDatos from "../components/Dashboards/TablaDatos";
 
 const Dashboards = () => {
   // Estado para controlar si el sidebar está expandido
@@ -24,7 +30,9 @@ const Dashboards = () => {
               <i className="lni lni-grid-alt"></i>
             </button>
             <div className="sidebar-logo">
-              <a href="#">GeoLogistics</a>
+              <a href="#" className="fst-italic">
+                TransMaps
+              </a>
             </div>
           </div>
           <ul className="sidebar-nav">
@@ -137,105 +145,155 @@ const Dashboards = () => {
         </aside>
         <div className="main">
           <nav className="navbar navbar-expand px-4 py-3">
-            <form action="#" className="d-none d-sm-inline-block"></form>
-            <div className="navbar-collapse collapse">
-              <ul className="navbar-nav ms-auto">
-                <li className="nav-item dropdown">
-                  <a
-                    href="#"
-                    data-bs-toggle="dropdown"
-                    className="nav-icon pe-md-0"
-                  >
-                    <img src={account} className="avatar img-fluid" alt="" />
-                  </a>
-                  <div className="dropdown-menu dropdown-menu-end rounded text-center fst-italic">
-                    Dropdown-Menu
-                  </div>
-                </li>
-              </ul>
+            <div className="container-fluid d-flex justify-content-between align-items-center">
+              {/* Elemento invisible para centrar */}
+              <div className="d-none d-md-block"></div>
+
+              {/* Texto centrado */}
+              <span className="fs-4 text-center mx-auto position-absolute start-50 translate-middle-x badge bg-violet bg-gradient d-flex align-items-center gap-2 py-2 px-3">
+                <img
+                  src={zonahoraria}
+                  className="avatar img-fluid"
+                  alt="zonahoraria"
+                  style={{ width: "30px", height: "30px" }}
+                />
+                TransMaps
+              </span>
+
+              {/* Menú de usuario */}
+              <div className="navbar-collapse collapse">
+                <ul className="navbar-nav ms-auto">
+                  <li className="nav-item dropdown">
+                    <a
+                      href="#"
+                      data-bs-toggle="dropdown"
+                      className="nav-icon pe-md-0 d-flex align-items-center py-2 me-2"
+                    >
+                      <img
+                        src={account}
+                        className="avatar img-fluid"
+                        alt="Account"
+                        style={{ width: "25px", height: "25px" }}
+                      />
+                      <span className="mx-2 text-white">Usuario</span>
+                    </a>
+                    <div className="dropdown-menu dropdown-menu-end rounded text-center fst-italic">
+                      Dropdown-Menu
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </nav>
           <main className="content px-3 py-4">
             <div className="container-fluid">
               <div className="mb-3">
-                <h3 className="fw-bold fs-4 mb-3">Admin Dashboard</h3>
                 <div className="row">
                   <div className="col-12 col-md-4 ">
-                    <div className="card border-0">
-                      <div className="card-body py-4">
-                        <h5 className="mb-2 fw-bold">Memebers Progress</h5>
-                        <p className="mb-2 fw-bold">$72,540</p>
-                        <div className="mb-0">
-                          <span className="badge text-success me-2">+9.0%</span>
-                          <span className=" fw-bold badge bg-primary">
-                            Since Last Month
-                          </span>
+                    <div className="card border-0 shadow-sm rounded mb-4">
+                      <div className="card-body d-flex align-items-center py-3 bg-violet rounded">
+                        {/* Icono a la izquierda */}
+                        <div className="me-4">
+                          <img
+                            src={consumocombustible}
+                            className="img-fluid"
+                            alt="Consumo del combustible"
+                            style={{ width: "70px", height: "70px" }}
+                          />
+                        </div>
+
+                        {/* Contenido a la derecha */}
+                        <div className="flex-grow-1">
+                          <p className="mb-1 fw-bold text-white">
+                            Consumo del combustible
+                          </p>{" "}
+                          {/* Espacio reducido */}
+                          <p className="mb-1 fw-bold text-white fs-2">
+                            300.000
+                          </p>{" "}
+                          {/* Espacio reducido */}
+                          <div className="d-flex justify-content-end">
+                            <span className="fw-bold small text-white">
+                              Litros mensuales
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="col-12 col-md-4 ">
-                    <div className="card  border-0">
-                      <div className="card-body py-4">
-                        <h5 className="mb-2 fw-bold">Memebers Progress</h5>
-                        <p className="mb-2 fw-bold">$72,540</p>
-                        <div className="mb-0">
-                          <span className="badge text-success me-2">+9.0%</span>
-                          <span className="fw-bold badge bg-warning">
-                            Since Last Month
-                          </span>
+                    <div className="card border-0 shadow-sm rounded mb-4">
+                      <div className="card-body d-flex align-items-center py-3 bg-violet rounded">
+                        {/* Icono a la izquierda */}
+                        <div className="me-4">
+                          <img
+                            src={huellacarbono}
+                            className="img-fluid"
+                            alt="Consumo del combustible"
+                            style={{ width: "70px", height: "70px" }}
+                          />
+                        </div>
+
+                        {/* Contenido a la derecha */}
+                        <div className="flex-grow-1">
+                          <p className="mb-1 fw-bold text-white">
+                            Huella de carbono
+                          </p>{" "}
+                          {/* Espacio reducido */}
+                          <p className="mb-1 fw-bold text-white fs-2">
+                            52.000
+                          </p>{" "}
+                          {/* Espacio reducido */}
+                          <div className="d-flex justify-content-end">
+                            <span className="fw-bold small text-white">
+                              C02 Equivalente
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   <div className="col-12 col-md-4 ">
-                    <div className="card border-0">
-                      <div className="card-body py-4">
-                        <h5 className="mb-2 fw-bold">Memebers Progress</h5>
-                        <p className="mb-2 fw-bold">$72,540</p>
-                        <div className="mb-0">
-                          <span className="badge text-success me-2">+9.0%</span>
-                          <span className="fw-bold badge bg-success">
-                            Since Last Month
-                          </span>
+                    <div className="card border-0 shadow-sm rounded mb-4">
+                      <div className="card-body d-flex align-items-center py-3 bg-violet rounded">
+                        {/* Icono a la izquierda */}
+                        <div className="me-4">
+                          <img
+                            src={kilometrosrecorridos}
+                            className="img-fluid"
+                            alt="Consumo del combustible"
+                            style={{ width: "70px", height: "70px" }}
+                          />
+                        </div>
+
+                        {/* Contenido a la derecha */}
+                        <div className="flex-grow-1">
+                          <p className="mb-1 fw-bold text-white">
+                            Kilometros recorridos
+                          </p>{" "}
+                          {/* Espacio reducido */}
+                          <p className="mb-1 fw-bold text-white fs-2">
+                            1.250.000
+                          </p>{" "}
+                          {/* Espacio reducido */}
+                          <div className="d-flex justify-content-end">
+                            <span className="fw-bold small text-white">
+                              Kilometros sobre horas
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
-                <h3 className="fw-bold fs-4 my-3">Avg. Agent Earnings</h3>
+                <div className="row">
+                  <div className="col-12 mb-2">
+                    <Buscador />
+                  </div>
+                </div>
                 <div className="row">
                   <div className="col-12">
-                    <table className="table table-striped">
-                      <thead>
-                        <tr className="highlight">
-                          <th scope="col">#</th>
-                          <th scope="col">First</th>
-                          <th scope="col">Last</th>
-                          <th scope="col">Handle</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <th scope="row">1</th>
-                          <td>Mark</td>
-                          <td>Otto</td>
-                          <td>@mdo</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">2</th>
-                          <td>Jacob</td>
-                          <td>Thornton</td>
-                          <td>@fat</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">3</th>
-                          <td>Larry the Bird</td>
-                          <td>Larry the Two</td>
-                          <td>@twitter</td>
-                        </tr>
-                      </tbody>
-                    </table>
+                    <TablaDatos />
                   </div>
                 </div>
               </div>
